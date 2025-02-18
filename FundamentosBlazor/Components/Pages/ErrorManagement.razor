@@ -1,5 +1,14 @@
 ﻿@page "/error-demo"
 
-<h3>ErrorManagement</h3>
+<h3>Error Management of Blazor</h3>
+
+@if (_hasError)
+{
+    <p style="color: red;">An error occured: @_errorMessage</p>
+}
+else
+{
+    <button @onclick="ErrorTriggered">Generate Error</button>
+}
 
 
