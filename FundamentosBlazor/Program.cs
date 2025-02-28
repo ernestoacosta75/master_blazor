@@ -1,10 +1,21 @@
 using FundamentosBlazor.Components;
+using FundamentosBlazor.Repositories;
+using FundamentosBlazor.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders();
+    logging.AddConsole();
+    logging.AddDebug();
+});
+
+builder.Services.AddScoped<IMyService, MyService>();
 
 var app = builder.Build();
 
